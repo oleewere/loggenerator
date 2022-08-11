@@ -93,7 +93,7 @@ def main():
     parser = optparse.OptionParser("usage: %prog [options]")
     parser.add_option("-j", "--json-format", dest="json_format", default=False, action="store_true", help="Use json format for logging")
     parser.add_option("-b", "--use-broken-json", dest="use_broken_json", default=False, action="store_true", help="Use json format for logging")
-    parser.add_option("-s", "--sleep-interval", dest="sleep_interval", type="int", default=10, help="Sleep interval between")
+    parser.add_option("-s", "--sleep-interval", dest="sleep_interval", type="int", default=10, help="Sleep interval between log generation events")
     parser.add_option("-t", "--times", dest="times", type="int", default=1, help="Repeat messages number between sleeps")
     (options, args) = parser.parse_args()
     while True:
@@ -103,6 +103,8 @@ def main():
         sleep_interval = int(sleep_interval_env_val) if sleep_interval_env_val else options.sleep_interval
         times_env_val = os.getenv("REPEAT_MESSAGES_BETWEEN_SLEEPS", None)
         times = int(times_env_val) if times_env_val else options.times
+        broken_json_env_val = os.getenv("BROKEN_JSON", "false")
+        broken_json = True if broken_json_env_val == "true" else options.use_broken_json
 
         env_settings = {}
         env_settings['JSON_FORMAT']=json_format_env_val
@@ -114,7 +116,7 @@ def main():
             format_message(simple_message, json_format)
             format_message(full_stacktrace, json_format, "ERROR")
             format_message(simple_message, json_format)
-            format_message(full_stacktrace, json_format, "ERROR", True, options.use_broken_json)
+            format_message(full_stacktrace, json_format, "ERROR", True, broken_json)
             format_message(simple_message, json_format)
         time.sleep(sleep_interval)
 
