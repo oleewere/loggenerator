@@ -13,6 +13,7 @@ Options can be provided by flags or environment variables:
 - `SLEEP_INTERVAL_SEC` env variable or `-s / --sleep-interval` as command argument: Sleep interval between log generation events in seconds. (default: `10`)
 - `REPEAT_MESSAGES_BETWEEN_SLEEPS` env variable or `-t / --times` as command argument: Repeat messages number between sleeps. (default: `1`)
 - `JSON_FORMAT` env variable or `-j / --json-format` as command argument: Boolean flag to enable json formatted logging. (default: `false`)
+- `DOCKER_FORMAT` env variable or `-d / --docker-format` as command argument: Boolean flag to enable docker formatted logging. (default: `false`)
 - `BROKEN_JSON` env variable or `-b / --use-broken-json` as command argument: Boolean flag to enable json message splitting. Useful to test joining lines. (default: `false`)
 
 ## Usage
