@@ -15,6 +15,8 @@ Options can be provided by flags or environment variables:
 - `JSON_FORMAT` env variable or `-j / --json-format` as command argument: Boolean flag to enable json formatted logging. (default: `false`)
 - `DOCKER_FORMAT` env variable or `-d / --docker-format` as command argument: Boolean flag to enable docker formatted logging. (default: `false`)
 - `BROKEN_JSON` env variable or `-b / --use-broken-json` as command argument: Boolean flag to enable json message splitting. Useful to test joining lines. (default: `false`)
+- `USE_LOGFILE` env variable or `-l / --use-logfile` as command argument: Boolean flag to send logs to a logfile. (default: `false`)
+- `LOGFILE` env variable or `-f / --logfile` as command argument: Logfile location name if any logfile is set. (default: `loggenerator.log`)
 
 ## Usage
 
